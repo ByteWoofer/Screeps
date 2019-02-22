@@ -43,12 +43,16 @@ var roleBuilder = {
                 }
             }
             var dest = Game.getObjectById(creep.memory.dest);
-            if(dest.name == 'Wait' && creep.pos == dest.constructor.name){
-                delete creep.memory.dest;
-            } else {
-                if(creep.harvest(dest) != OK){
-                    creep.moveTo(dest), { visualizePathStyle: { stroke: '#ffaa00' } };
+            if(dest.name){
+                if (dest.name == 'Wait' && creep.pos == dest.constructor.name) {
+                    delete creep.memory.dest;
+                } else {
+                    if (creep.harvest(dest) != OK) {
+                        creep.moveTo(dest), { visualizePathStyle: { stroke: '#ffaa00' } };
+                    }
                 }
+            } else {
+                console.log(creep.name);
             }
         }
     }
