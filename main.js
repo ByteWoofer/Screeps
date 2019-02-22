@@ -10,6 +10,7 @@ module.exports.loop = function () {
     if (!Memory.sourceInUse) {
         console.log('Source was not in use');
         var Numsources = Game.spawns['Spawn1'].room.find(FIND_SOURCES).length;
+        Memory.sourceInUse = [];
         console.log('Number of found sources: ' + Numsources);
         for (i = 0; i < Numsources; i++) {
             console.log('Marking as false:' + i);
