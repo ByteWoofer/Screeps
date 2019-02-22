@@ -7,7 +7,11 @@ var roleBuilder = {
             creep.memory.building = false;
             creep.say('harvest');
         }
+        
         if(!creep.memory.building && creep.carry.energy == creep.carryCapacity) {
+            Memory.sourceInUse[creep.memory.index] = false;
+            delete creep.memory.index;
+            delete creep.memory.dest;
             creep.memory.building = true;
             creep.say('build');
         }
@@ -22,9 +26,28 @@ var roleBuilder = {
         }
         else {
             var sources = creep.room.find(FIND_SOURCES);
-            if(creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
-                if(creep.moveTo(sources[1], {visualizePathStyle: {stroke: '#ffaa00'}}) == ERR_NO_PATH){
-                    creep.moveTo(Game.flags['Wait'], {visualizePathStyle: {stroke: '#ffaa00'}});   
+            var index = 0;
+            var found = false;
+            if(!creep.memory.dest){
+                for (sourceUse in Memory.sourceInUse) {
+                    if (!sourceUse) {
+                        creep.memory.dest = sources[index].id;
+                        Memory.sourceInUse[index]=true;
+                        creep.memory.index = index;
+                        break;
+                    }
+                    index + 1;
+                }
+                if (found = false) {
+                    creep.memory.dest = Game.flags['Wait'].id;
+                }
+            }
+            var dest = Game.getObjectByID(creep.memory.dest);
+            if(dest.name == 'Wait' && creep.pos == dest.constructor.name){
+                delete creep.memory.dest;
+            } else {
+                if(creep.harvest(dest) != OK){
+                    creep.moveTo(dest), { visualizePathStyle: { stroke: '#ffaa00' } };
                 }
             }
         }
