@@ -43,7 +43,7 @@ var roleBuilder = {
                 }
             }
             var dest = Game.getObjectById(creep.memory.dest);
-            if(dest.name){
+            if(dest){
                 if (dest.name == 'Wait' && creep.pos == dest.constructor.name) {
                     delete creep.memory.dest;
                 } else {
