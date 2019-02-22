@@ -2,6 +2,17 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleAttacker = require('role.attacker');
+var manifest = true;
+console.log(!Memory.sourceInUse);
+if(!Memory.sourceInUse){
+    console.log('Source was not in use');
+    var Numsources = Game.spawns['Spawn1'].room.find(FIND_SOURCES).length;
+    console.log('Number of found sources: '+Numsources);
+    for(i=0; i<Numsources; i++){
+        console.log('Marking as false:' + i);
+        Memory.sourceInUse[i].push(false);
+    }
+}
 
 module.exports.loop = function () {
     for(var name in Memory.creeps) {
