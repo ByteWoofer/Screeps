@@ -13,7 +13,7 @@ module.exports.loop = function () {
         console.log('Number of found sources: ' + Numsources);
         for (i = 0; i < Numsources; i++) {
             console.log('Marking as false:' + i);
-            Memory.sourceInUse[i].push(false);
+            Memory.sourceInUse.push(false);
         }
     }
 
