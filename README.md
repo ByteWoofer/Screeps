@@ -42,11 +42,6 @@ Deposited energy:
             iterate through creeps:
                 Task Doesn't exist:
                     Set task(Request permission)
-                Task (Goto flag):
-                    if not at flag:
-                        creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
-                    else
-                        Set task(Request Permission)
 
                 Task (Request permission):
                     for list of sources:
@@ -58,7 +53,13 @@ Deposited energy:
                             next
                     if none found:
                         set task(Goto Flag)
-                        
+
+                Task (Goto flag):
+                    if not at flag:
+                        creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
+                    else
+                        Set task(Request Permission)
+
                 Task (GoHarvest):
                     if not full on energy:
                         if at source:
@@ -69,6 +70,7 @@ Deposited energy:
                         remove from memory of source
                         set job to Deposit
                         set target for Spawner to deposit at
+
                 Task (Deposit):              
                     If energy not empty:
                         If not at deposit target:
