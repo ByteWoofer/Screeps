@@ -4,9 +4,8 @@ var roleHarvester = {
     run: function(creep) {
         if(creep.memory.dest){
             var destination = creep.memory.dest.getObjectById; // load destination from memory
-        } else {
-            creep.memory.task = '';
         }
+        
         creep.say(creep.memory.task);
         
         switch(creep.memory.task){
