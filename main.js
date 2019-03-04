@@ -6,7 +6,8 @@ var manifest = true;
 
 module.exports.loop = function () {
 //Create a boolean list of sources for if they are being used
-    console.log(!Memory.sourceInUse);
+    //console.log(!Memory.sourceInUse);
+    /* 
     if (!Memory.sourceInUse) {
         console.log('Source was not in use');
         var Numsources = Game.spawns['Spawn1'].room.find(FIND_SOURCES).length;
@@ -17,7 +18,7 @@ module.exports.loop = function () {
             Memory.sourceInUse.push(false);
         }
     }
-
+    */
     for(var name in Memory.creeps) {
         if(!Game.creeps[name]) {
             delete Memory.creeps[name];
