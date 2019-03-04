@@ -69,6 +69,7 @@ var roleHarvester = {
             default:
                 creep.memory.task = "request";
         }
+        console.log(destination);
     creep.memory.dest = destination.id;
     }
 };
