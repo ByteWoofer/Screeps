@@ -74,7 +74,7 @@ var roleHarvester = {
             console.log('local destination recognized!');
             creep.memory.dest = destination.id;
         }
-        creep.memory.test = "this works at least";
+        creep.memory.test = destination;
         console.log('remote mem: ' + creep.memory.dest);
     }
 };
