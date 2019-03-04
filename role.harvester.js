@@ -70,7 +70,7 @@ var roleHarvester = {
                 creep.memory.task = "request";
         }
         console.log('local: ' + destination);
-        if(destination.id){
+        if(destination.name != "Flag1"){
             console.log('local destination recognized!');
             creep.memory.dest = destination.id;
         }
