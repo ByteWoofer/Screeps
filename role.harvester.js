@@ -14,8 +14,9 @@ var roleHarvester = {
                 var sources = creep.room.find(FIND_SOURCES);
                 for (i = 0; i< Memory.sourceInUse.length; i++){         //iterate over sources
                     if(Memory.sourceInUse[i] < 1){         //check for available spot
-                        Memory.sourceInUse[i].memory.users++;
+                        Memory.sourceInUse[i]++;
                         destination = sources[i];
+                        creep.memory.sourceIndex = i;
                         break;
                     }
                 }
@@ -48,7 +49,7 @@ var roleHarvester = {
                         creep.moveTo(destination);
                     }
                 } else {
-                    destination.memory.users--;
+                    Memory.sourceInUse[creep.memory.sourceIndex]--;
                     creep.memory.task = "dDestination";
                 }
             break;
