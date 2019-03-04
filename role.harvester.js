@@ -5,7 +5,7 @@ var roleHarvester = {
         if(creep.memory.dest){
             var destination = creep.memory.dest.getObjectById; // load destination from memory
         }
-        
+
         creep.say(creep.memory.task);
         
         switch(creep.memory.task){
@@ -13,6 +13,9 @@ var roleHarvester = {
                 destination = ""; 
                 var sources = creep.room.find(FIND_SOURCES); //list sources
                 for (i = 0; i< sources.length; i++){         //iterate over sources
+                    if(!sources[i].memory.users){
+                        sources[i].memory.users = 0;
+                    }
                     if(sources[i].memory.users < 1){         //check for available spot
                         sources[i].memory.users++;
                         destination = sources[i];
