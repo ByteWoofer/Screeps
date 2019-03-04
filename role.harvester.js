@@ -35,10 +35,10 @@ var roleHarvester = {
             break;
 
             case "flag": //Determine distance to flag and progress if outside
-            destination = Game.flags[creep.memory.flag];
-            if(destination){
-                if(Math.sqrt((Math.pow((creep.pos.x-destination.pos.x),2)+Math.pow((creep.pos.y-destination.pos.y),2)))>5) {
-                    creep.moveTo(destination, {visualizePathStyle: {stroke: '#ffffff'}}); //move towards if over 5 away
+            var flagdest = Game.flags[creep.memory.flag];
+            if(flagdest){
+                if(Math.sqrt((Math.pow((creep.pos.x-flagdest.pos.x),2)+Math.pow((creep.pos.y-flagdest.pos.y),2)))>5) {
+                    creep.moveTo(flagdest, {visualizePathStyle: {stroke: '#ffffff'}}); //move towards if over 5 away
                 } else {
                     creep.memory.task = "request"; //request new task
                 }
@@ -70,7 +70,7 @@ var roleHarvester = {
                 creep.memory.task = "request";
         }
         console.log('local: ' + destination);
-        if(destination.name != "Flag1"){
+        if(destination){
             console.log('local destination recognized!');
             creep.memory.dest = destination.id;
         }
