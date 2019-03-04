@@ -17,6 +17,7 @@ var roleHarvester = {
                         Memory.sourceInUse[i]++;
                         destination = sources[i];
                         creep.memory.sourceIndex = i;
+                        creep.memory.task = "harvest";
                         break;
                     }
                 }
