@@ -70,13 +70,13 @@ var roleHarvester = {
             default:
                 creep.memory.task = "request";
         }
-        console.log('local: ' + destination);
+        //console.log('local: ' + destination);
         if(destination){
-            console.log('local destination recognized!');
+            //console.log('local destination recognized!');
             creep.memory.dest = destination.id;
         }
         creep.memory.test = destination;
-        console.log('remote mem: ' + creep.memory.dest);
+        //console.log('remote mem: ' + creep.memory.dest);
     }
 };
 
