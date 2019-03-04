@@ -49,7 +49,7 @@ var roleHarvester = {
 
             case "harvest": //progress to destination and harvest if energy is not full
                 if(creep.carry.energy<creep.carryCapacity){
-                    if(creep.harvest() == ERR_NOT_IN_RANGE) {
+                    if(creep.harvest(destination) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(destination);
                     }
                 } else {
