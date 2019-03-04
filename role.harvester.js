@@ -4,8 +4,6 @@ var roleHarvester = {
     run: function(creep) {
         if(creep.memory.dest){
             var destination = creep.memory.dest.getObjectById; // load destination from memory
-        } else {
-            creep.memory.dest = "";
         }
 
         creep.say(creep.memory.task);
@@ -38,11 +36,13 @@ var roleHarvester = {
             break;
 
             case "flag": //Determine distance to flag and progress if outside
+            if(destination){
                 if(Math.sqrt((Math.pow((creep.pos.x-destination.pos.x),2)+Math.pow((creep.pos.y-destination.pos.y),2)))>5) {
                     creep.moveTo(destination, {visualizePathStyle: {stroke: '#ffffff'}}); //move towards if over 5 away
                 } else {
                     creep.memory.task = "request"; //request new task
                 }
+            }
             break;
 
             case "harvest": //progress to destination and harvest if energy is not full
