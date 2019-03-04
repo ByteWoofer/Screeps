@@ -7,18 +7,18 @@ var manifest = true;
 module.exports.loop = function () {
 //Create a boolean list of sources for if they are being used
     //console.log(!Memory.sourceInUse);
-    /* 
+    
     if (!Memory.sourceInUse) {
         console.log('Source was not in use');
         var Numsources = Game.spawns['Spawn1'].room.find(FIND_SOURCES).length;
         Memory.sourceInUse = [];
         console.log('Number of found sources: ' + Numsources);
         for (i = 0; i < Numsources; i++) {
-            console.log('Marking as false:' + i);
-            Memory.sourceInUse.push(false);
+            console.log('Marking as zero:' + i);
+            Memory.sourceInUse.push(0);
         }
     }
-    */
+    
     for(var name in Memory.creeps) {
         if(!Game.creeps[name]) {
             delete Memory.creeps[name];
