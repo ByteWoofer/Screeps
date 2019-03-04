@@ -32,6 +32,7 @@ var roleHarvester = {
 
             case "fDestination": //set flag destination
                 destination = Game.flags['Flag1'];
+                creep.memory.dest = destination;
                 creep.memory.task = "flag";
             break;
 
