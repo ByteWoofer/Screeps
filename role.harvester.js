@@ -32,6 +32,7 @@ var roleHarvester = {
 
             case "fDestination": //set flag destination
                 creep.memory.flag = "Flag1";
+                creep.memory.task = "flag";
             break;
 
             case "flag": //Determine distance to flag and progress if outside
