@@ -13,6 +13,7 @@ var roleHarvester = {
                 destination = ""; 
                 var sources = creep.room.find(FIND_SOURCES); //list sources
                 for (i = 0; i< sources.length; i++){         //iterate over sources
+                    console.log(sources[i]);
                     if(sources[i].memory.users == undefined){
                         sources[i].memory.users = 0;
                     }
