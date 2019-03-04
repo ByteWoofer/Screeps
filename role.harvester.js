@@ -4,6 +4,8 @@ var roleHarvester = {
     run: function(creep) {
         if(creep.memory.dest){
             var destination = creep.memory.dest.getObjectById; // load destination from memory
+        } else {
+            creep.memory.dest = "";
         }
 
         creep.say(creep.memory.task);
@@ -67,7 +69,7 @@ var roleHarvester = {
             default:
                 creep.memory.task = "request";
         }
-        creep.memory.dest = destination.id;
+    creep.memory.dest = destination.id;
     }
 };
 
