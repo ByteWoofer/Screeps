@@ -34,7 +34,7 @@ var roleBuilder = {
                 var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
                 if(targets.length) {
                     destination = creep.build(targets[0]);
-                    creep.memory.task = "deposit";
+                    creep.memory.task = "build";
                 } else {
                     creep.memory.task = "fDestination";
                 }
@@ -68,9 +68,9 @@ var roleBuilder = {
                 }
             break;
 
-            case "deposit": //if has energy, progress to destination and transfer
+            case "build": //if has energy, progress to destination and build
                 if(creep.carry.energy>0){
-                    if(creep.transfer(destination, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
+                    if(creep.build(destination) == ERR_NOT_IN_RANGE){
                         creep.moveTo(destination, {visualizePathStyle: {stroke: '#ffffff'}});
                     }
                 } else {
