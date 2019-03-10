@@ -54,6 +54,7 @@ var roleHarvester = {
                     }
                 } else {
                     Memory.sourceInUse[creep.memory.sourceIndex]--;
+                    delete creep.memory.sourceIndex;
                     creep.memory.task = "dDestination";
                 }
             break;
