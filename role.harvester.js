@@ -3,7 +3,7 @@ var roleHarvester = {
     /** @param {Creep} creep **/
     run: function(creep) {
         if(creep.memory.dest){
-            var destination = creep.memory.dest.getObjectById; // load destination from memory
+            var destination = Game.getObjectById(creep.memory.dest); // load destination from memory
         }
 
         creep.say(creep.memory.task);
