@@ -59,7 +59,7 @@ var roleHarvester = {
             break;
 
             case "deposit": //if has energy, progress to destination and transfer
-                if(creep.energy>0){
+                if(creep.carry.energy>0){
                     if(creep.transfer(destination, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
                         creep.moveTo(destination, {visualizePathStyle: {stroke: '#ffffff'}});
                     }
