@@ -33,7 +33,7 @@ var roleHarvester = {
 
             case "dDestination": //set deposit destination
             delete creep.memory.task;
-            if(Game.spawns['Spawn1'].energy < Game.spawns['Spawn1'].carryCapacity){
+            if(Game.spawns['Spawn1'].energy < Game.spawns['Spawn1'].energyCapacity){
                 destination = Game.spawns['Spawn1'];
                 creep.memory.task = "deposit"
             } else {
