@@ -31,12 +31,24 @@ var roleBuilder = {
             break;
 
             case "bDestination": //set build destination
-                var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
+                delete destination;
+                var destination;
+                var targets = creep.room.find(FIND_MY_CONSTRUCTION_SITES);
                 if(targets.length) {
                     destination = creep.build(targets[0]);
-                    creep.memory.task = "build";
                 } else {
+                    targets = creep.room.find(FIND_MY_STRUCTURES, {filter: { structureType: STRUCTURE_WALL || STRUCTURE_ROAD || STRUCTURE_TOWER }});
+                    for(i = 0; i<targets.length; i++){
+                        if(targets[i].hits < (targets[i].hitsMax * 0.33){
+                            destination = targest[i];
+                            break;
+                        }
+                    }
+                }
+                if(!destination){
                     creep.memory.task = "fDestination";
+                }else{
+                    creep.memory.task = "build";
                 }
             break;
 
