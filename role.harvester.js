@@ -38,7 +38,7 @@ var roleHarvester = {
                 creep.memory.task = "deposit"
             } else {
                 var containers = creep.room.find(FIND_MY_STRUCTURES, {
-                    filter: { structureType: STRUCTURE_CONTAINER }});
+                    filter: { structureType: STRUCTURE_EXTENSION }});
                 for(i=0; i<containers.length; i++){
                     if(containers[i].store < containers[i].storeCapacity){
                         destination = containers[i];
