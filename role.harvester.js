@@ -5,8 +5,8 @@ var roleHarvester = {
         if(creep.memory.dest){
             var destination = Game.getObjectById(creep.memory.dest); // load destination from memory
         }
-
-        creep.say(creep.memory.task);
+        if(Memory.debugJobs)
+            creep.say(creep.memory.task);
         
         switch(creep.memory.task){
             case "request":

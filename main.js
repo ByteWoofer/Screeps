@@ -2,12 +2,18 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleAttacker = require('role.attacker');
+var numHarvesters = 3;
+var numUpgraders = 5;
+var numBuilders = 2;
+var numAttackers = 2;
 var manifest = true;
-
+var debugJobs = false;
 module.exports.loop = function () {
 //Create a boolean list of sources for if they are being used
     //console.log(!Memory.sourceInUse);
-    
+    if(!Memory.debugJobs)
+        Memory.debugJobs = debugJobs;
+
     if (!Memory.sourceInUse) {
         console.log('Source was not in use');
         var Numsources = Game.spawns['Spawn1'].room.find(FIND_SOURCES).length;
@@ -37,19 +43,19 @@ module.exports.loop = function () {
         console.log('Upgraders: ' + upgraders.length);
         console.log('Builders: ' + builders.length);
         console.log('Attackers: ' + attackers.length);
-        if(harvesters.length < 2) {
+        if(harvesters.length < numHarvesters) {
             var newName = 'Harvester' + (harvesters.length + 1) + '.'+ Game.time;
             console.log('Spawning new harvester: ' + newName);
             Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName, {memory: {role: 'harvester'}});
-        } else if (upgraders.length < 2) {
+        } else if (upgraders.length < numUpgraders) {
             var newName = 'Upgrader' + (upgraders.length + 1)  + '.'+ Game.time;
             console.log('Spawning new upgrader: ' + newName);
             Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName, {memory: {role: 'upgrader'}});
-        } else if (builders.length < 2) {
+        } else if (builders.length < numBuilders) {
             var newName = 'Builder' + (builders.length + 1) + '.'+ Game.time;
             console.log('Spawning new builder: ' + newName);
             Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName, {memory: {role: 'builder'}});
-        } else if (attackers.length < 2) {
+        } else if (attackers.length < numAttackers) {
             var newName = 'Attacker' + (attackers.length + 1);
             console.log('Spawning new attacker: ' + newName);
             Game.spawns['Spawn1'].spawnCreep([TOUGH,ATTACK,MOVE], newName, {memory: {role: 'attacker'}});

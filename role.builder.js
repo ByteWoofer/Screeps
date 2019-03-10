@@ -5,8 +5,8 @@ var roleBuilder = {
         if(creep.memory.dest){
             var destination = Game.getObjectById(creep.memory.dest); // load destination from memory
         }
-
-        creep.say(creep.memory.task);
+        if(Memory.debugJobs)
+            creep.say(creep.memory.task);
         
         switch(creep.memory.task){
             case "request":
@@ -67,7 +67,7 @@ var roleBuilder = {
                     creep.memory.task = "bDestination";
                 }
             break;
-
+                
             case "build": //if has energy, progress to destination and build
                 if(creep.carry.energy>0){
                     if(creep.build(destination) == ERR_NOT_IN_RANGE){
