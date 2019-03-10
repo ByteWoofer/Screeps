@@ -27,7 +27,18 @@ var roleHarvester = {
             break;
 
             case "dDestination": //set deposit destination
+            if(Game.spawns['Spawn1'].energy < Game.spawns['Spawn1'].carryCapacity){
                 destination = Game.spawns['Spawn1'];
+            } else {
+                var containers = creep.room.find(FIND_MY_STRUCTURES, {
+                    filter: { structureType: STRUCTURE_CONTAINER }});
+                for(i=0; i<containers.length; i++){
+                    if(containers[i].store < containers[i].storeCapacity){
+                        destination = containers[i];
+                        break;
+                    }
+                }
+            }
                 creep.memory.task = "deposit";
             break;
 
