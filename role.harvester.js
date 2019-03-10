@@ -27,19 +27,21 @@ var roleHarvester = {
             break;
 
             case "dDestination": //set deposit destination
+            delete creep.memory.task;
             if(Game.spawns['Spawn1'].energy < Game.spawns['Spawn1'].carryCapacity){
                 destination = Game.spawns['Spawn1'];
+                creep.memory.task = "deposit"
             } else {
                 var containers = creep.room.find(FIND_MY_STRUCTURES, {
                     filter: { structureType: STRUCTURE_CONTAINER }});
                 for(i=0; i<containers.length; i++){
                     if(containers[i].store < containers[i].storeCapacity){
                         destination = containers[i];
+                        creep.memory.task = "deposit"
                         break;
                     }
                 }
             }
-                creep.memory.task = "deposit";
             break;
 
             case "fDestination": //set flag destination
