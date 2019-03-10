@@ -87,7 +87,7 @@ var roleBuilder = {
                             creep.moveTo(destination, {visualizePathStyle: {stroke: '#ffffff'}});
                         }
                     } else {
-                        if(creep.transfer(destination, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
+                        if(creep.repair(destination, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
                             creep.moveTo(destination, {visualizePathStyle: {stroke: '#ffffff'}});
                         }
                     }
