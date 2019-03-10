@@ -40,7 +40,7 @@ var roleBuilder = {
                     targets = creep.room.find(FIND_MY_STRUCTURES, {filter: { structureType: STRUCTURE_WALL || STRUCTURE_ROAD || STRUCTURE_TOWER }});
                     for(i = 0; i<targets.length; i++){
                         if(targets[i].hits < (targets[i].hitsMax * 0.33)){
-                            destination = targest[i];
+                            destination = targets[i];
                             break;
                         }
                     }
