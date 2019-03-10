@@ -82,8 +82,14 @@ var roleBuilder = {
                 
             case "build": //if has energy, progress to destination and build
                 if(creep.carry.energy>0){
-                    if(creep.build(destination) == ERR_NOT_IN_RANGE){
-                        creep.moveTo(destination, {visualizePathStyle: {stroke: '#ffffff'}});
+                    if(destination.structureType == ConstructionSite){
+                        if(creep.build(destination) == ERR_NOT_IN_RANGE){
+                            creep.moveTo(destination, {visualizePathStyle: {stroke: '#ffffff'}});
+                        }
+                    } else {
+                        if(creep.transfer(destination, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
+                            creep.moveTo(destination, {visualizePathStyle: {stroke: '#ffffff'}});
+                        }
                     }
                 } else {
                     creep.memory.task = "fDestination";
