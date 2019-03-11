@@ -4,6 +4,8 @@ var roleBuilder = {
     run: function(creep) {
         if(creep.memory.dest){
             var destination = Game.getObjectById(creep.memory.dest); // load destination from memory
+        } else {
+            var destination = "";
         }
         if(Memory.debugJobs)
             creep.say(creep.memory.task);
