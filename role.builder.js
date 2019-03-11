@@ -105,11 +105,13 @@ var roleBuilder = {
                 creep.memory.task = "request";
         }
         //console.log('local: ' + destination);
+        
         if(destination){
             //console.log('local destination recognized!');
             creep.memory.dest = destination.id;
+        }else{
+            creep.memory.dest = "";
         }
-        creep.memory.test = destination;
         //console.log('remote mem: ' + creep.memory.dest);
     }
 };
