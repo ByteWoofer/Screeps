@@ -85,7 +85,9 @@ var roleBuilder = {
                 
             case "build": //if has energy, progress to destination and build
                 if(creep.carry.energy>0){
-                    if(destination.structureType == ConstructionSite){
+                    if (!destination){
+                        creep.memory.task = "bDestination";
+                    }   else if(destination.structureType == ConstructionSite){
                         if(creep.build(destination) == ERR_NOT_IN_RANGE){
                             creep.moveTo(destination, {visualizePathStyle: {stroke: '#ffffff'}});
                         }
